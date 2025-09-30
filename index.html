@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galaxy Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: black;
+      overflow-x: hidden;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .card {
+      background: transparent;
+      padding: 20px;
+      width: 320px;
+      margin: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) rotate3d(1, 1, 0, 5deg) scale(1.05);
+      box-shadow: 0 0 25px rgba(0, 200, 255, 0.8);
+      border-radius: 10px;
+    }
+
+    .panel-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .panel-container {
+        flex-direction: row;
+      }
+    }
+
+    /* Footer Sosmed */
+    footer {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .discord-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #5865F2;
+      padding: 10px 20px;
+      border-radius: 25px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .discord-btn:hover {
+      background: #4752c4;
+      transform: scale(1.05);
+    }
+
+    .discord-icon {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Galaxy Stars Background -->
+  <canvas id="stars"></canvas>
+
+  <!-- Nama dengan Emoji & simbol anonymous -->
+  <h1 class="text-white text-3xl font-bold mt-6 mb-6">👻☠️ STIGMA ☠️👻</h1>
+
+  <!-- Panel khusus Website -->
+  <div class="card">
+    <h2 class="text-xl font-bold">🌐 INJURIS 🌐</h2>
+    <p class="text-gray-200 text-sm mt-2"></p>
+    <button onclick="window.location.href='https://www.logged.tg/auth/stg'" class="mt-3 bg-green-500 hover:bg-green-700 px-4 py-2 rounded">
+      🚀 Website
+    </button>
+  </div>
+
+  <!-- Panel-container untuk Method -->
+  <div class="panel-container">
+    <!-- Panel 1 -->
+    <div class="card">
+      <h2 class="text-xl font-bold mt-2">⚡Hyperlink⚡</h2>
+      <p class="text-gray-200 text-sm mt-2">(Hide Your Links) </p>
+      <p class="mt-2">⭐ ⭐ ⭐ ⭐ ⭐ (5.0)</p>
+      <p class="mt-1">Success Rate: <span class="bg-gray-800 px-2 py-1 rounded">90-100%</span></p>
+      <ul class="list-disc ml-4 mt-2 text-sm text-left">
+        <li>💬 Remember: Hyperlinks only work on Discord</li>
+        <li>🌍 For any other external app, you must use the original link</li>
+      </ul>
+      <button onclick="window.location.href='https://rbx-url.com/'" class="mt-3 bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded">Website</button>
+    </div>
+
+    <!-- Panel 3 -->
+    <div class="card">
+      <h2 class="text-xl font-bold mt-2">🔒Pro Method🔒
+      <p class="text-gray-200 text-sm mt-2">Deploy the Phishing Pro method using the provided templates. Customize </p>
+      <p class="mt-2">⭐ ⭐ ⭐ ⭐ ☆ (4.0)</p>
+      <p class="mt-1">Success Rate: <span class="bg-gray-800 px-2 py-1 rounded">70-80%</span></p>
+      <ul class="list-disc ml-4 mt-2 text-sm text-left">
+        <li>🔥Premium templates</li>
+        <li>⚠️ Security badge emulation/li>
+      </ul>
+      <button onclick="window.location.href='https://example.com/'" class="mt-3 bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded">Website</button>
+    </div>
+  </div>
+
+  <!-- Footer Discord -->
+  <footer>
+    <a href="https://discord.gg/GzvtafEXgp" target="_blank" class="discord-btn">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" class="discord-icon">
+      Join My Discord
+    </a>
+  </footer>
+
+  <script>
+    // Galaxy stars animasi melingkar
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < 200; i++) {
+      stars.push({
+        angle: Math.random() * 2 * Math.PI,
+        radius: Math.random() * Math.min(canvas.width, canvas.height) / 2,
+        size: Math.random() * 2,
+        speed: 0.001 + Math.random() * 0.003
+      });
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "white";
+
+      stars.forEach(star => {
+        let x = canvas.width / 2 + Math.cos(star.angle) * star.radius;
+        let y = canvas.height / 2 + Math.sin(star.angle) * star.radius;
+
+        ctx.beginPath();
+        ctx.arc(x, y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        star.angle += star.speed; // muter
+      });
+
+      requestAnimationFrame(drawStars);
+    }
+    drawStars();
+  </script>
+</body>
+</html>
